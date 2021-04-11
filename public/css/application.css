@@ -23,14 +23,45 @@ body {
 .card{
     width: 117px;
     height: 146px;
-    background-color: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
-    background-image: url(../images/front.png);
+    background-color: #A7E9AF;
     background-position: center;
+    object-fit: cover;
     margin-bottom: 34px;
     margin-left: 17px;
     margin-right: 17px;
+    position: relative;
+}
+
+.face {
+  width: 117px;
+  height: 146px;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: all .5s;
+  transform-style: preserve-3d;
+}
+
+.card img{
+    width: 100px;
+    height: 100px;
+}
+
+.back-face {
+  transform: rotateY(180deg);
+}
+.card.selected .back-face {
+  transform: rotateY(0deg);
+}
+.card.selected .front-face {    
+  width: 117px;
+  height: 146px;
+  transform: rotateY(-180deg);
 }
 
 @media screen and (max-width: 614px){
