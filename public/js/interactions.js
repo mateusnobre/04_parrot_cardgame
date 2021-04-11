@@ -40,13 +40,28 @@ for (let i = 0; i < nCards; i++) {
 
   let cards = document.getElementsByClassName('card');
   let selectedCards = document.getElementsByClassName('selected');
-  
+  let scoredCards = document.getElementsByClassName('scored');
+  let clickCount = 0;
   for (var i = 0; i < cards.length; i++){
     cards[i].addEventListener('click', function(){
-        if (selectedCards.length > 1){
-            for (var j = 0; j < selectedCards.length; j++){
-                selectedCards[j].classList.remove('selected')}
-        }
+        clickCount += 1;
         this.classList.add('selected')
+        if (selectedCards.length == 2){
+            firstCard = selectedCards[0].getElementsByClassName('back-face')[0];
+            secondCard = selectedCards[1].getElementsByClassName('back-face')[0];
+            if (firstCard.innerHTML == secondCard.innerHTML){
+                selectedCards[0].classList.add('scored');
+                selectedCards[1].classList.add('scored');
+                selectedCards[0].classList.remove('selected');
+                selectedCards[0].classList.remove('selected');
+            }
+            else {
+                selectedCards[0].classList.remove('selected');
+                selectedCards[0].classList.remove('selected');
+            }
+        }
+        if (scoredCards.length == nCards){
+            alert(`Você ganhou após ${clickCount} jogadas!`)
+        }
     })
 }
