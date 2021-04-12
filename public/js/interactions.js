@@ -56,12 +56,14 @@ for (let i = 0; i < nCards; i++) {
                 selectedCards[0].classList.remove('selected');
             }
             else {
-                selectedCards[0].classList.remove('selected');
-                selectedCards[0].classList.remove('selected');
+                setTimeout(function(){
+                    selectedCards[0].classList.remove('selected');
+                    selectedCards[0].classList.remove('selected');
+                } , 1000);
             }
         }
         if (scoredCards.length == nCards){
-            alert(`Você ganhou após ${clickCount} jogadas!`)
+            setTimeout(alert(`Você ganhou após ${clickCount} jogadas!`), 1000);_
         }
     })
 }
